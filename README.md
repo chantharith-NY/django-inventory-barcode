@@ -1,20 +1,20 @@
-##Django Inventory Management System
+## Django Inventory Management System
 
 This project is a Django-based Inventory Management System that allows users to manage items using barcode scanning. Users can borrow and return items by scanning their barcodes. This system is designed to simplify inventory tracking and enhance efficiency.
 
-###Features
+### Features
 - Barcode Scanning: Users can scan barcodes to borrow or return items.
 - Item Management: Add, update, and delete items in the inventory.
 - User Management: Manage user accounts and permissions.
 - Transaction History: Track borrowing and returning transactions.
 
-###Requirements
+### Requirements
 - Python 3.8+
 - Django 4.2+
 - A barcode scanner (optional for hardware integration)
 - Database (MySQL)
 
-###Installation
+### Installation
 1. Clone the Repository
 
 `git clone git@github.com:<username>/django-inventory-barcode.git`
@@ -48,7 +48,7 @@ Follow the prompts to set up an admin account.
 7. Access the Application
 Open your browser and go to http://127.0.0.1:8000.
 
-###Usage
+### Usage
 
 1. Log in using your admin or user credentials.
 2. Add items to the inventory through the admin panel or the UI.
@@ -57,12 +57,12 @@ Open your browser and go to http://127.0.0.1:8000.
     - Scan the same item's barcode again to return it.
 4. View transaction history and manage inventory from the dashboard.
 
-###Technologies Used
+### Technologies Used
 - Backend: Django
 - Frontend: HTML, CSS, JavaScript
 - Barcode: python-barcode or external hardware integration
 
-###Folder Structure
+### Folder Structure
 
 `django-inventory-barcode/
 `├── inventory_management/      # Django project folder
@@ -73,7 +73,7 @@ Open your browser and go to http://127.0.0.1:8000.
 `├── requirements.txt           # Dependencies
 `└── README.md                  # Project description
 
-###Contributing
+### Contributing
 Contributions are welcome! Please follow these steps:
 1. Fork the repository.
 2. Create a new branch for your feature or bugfix.
