@@ -18,6 +18,7 @@ This project is a Django-based Inventory Management System that allows users to 
 1. Clone the Repository
 
 `git clone git@github.com:<username>/django-inventory-barcode.git`
+
 `cd django-inventory-barcode`
 
 2. Set Up a Virtual Environment
