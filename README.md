@@ -65,13 +65,21 @@ Open your browser and go to http://127.0.0.1:8000.
 ### Folder Structure
 
 `django-inventory-barcode/`
+
 `├── inventory_management/      # Django project folder`
+
 `├── inventory/                 # Inventory app for managing items`
+
 `├── templates/                 # HTML templates`
+
 `├── static/                    # Static files (CSS, JS, images)`
+
 `├── manage.py                  # Django management script`
+
 `├── requirements.txt           # Dependencies`
+
 `└── README.md                  # Project description`
+
 
 ### Contributing
 Contributions are welcome! Please follow these steps:
