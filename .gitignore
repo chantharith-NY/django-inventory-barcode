@@ -1,0 +1,47 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Environment variables
+.env
+
+# Django stuff:
+*.log
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# Python virtual environment
+venv/
+
+# macOS files
+.DS_Store
+
+# Windows thumbnail database
+Thumbs.db
+
+# VSCode settings
+.vscode/
+
+# IDE settings
+.idea/
+
+# Coverage reports
+htmlcov/
+.coverage
+*.cover
+
+# MyPy
+.mypy_cache/
+
+# Pytest
+.pytest_cache/
+
+# Other backups
+*.bak
+*.swp
