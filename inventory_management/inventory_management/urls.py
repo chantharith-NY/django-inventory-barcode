@@ -23,6 +23,5 @@ from django.contrib.auth.views import LoginView, LogoutView
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("login/", LoginView.as_view(template_name='inventory/login.html', redirect_authenticated_user=True), name="login"),
-    path("logout/", LogoutView.as_view(next_page='login'), name="logout"),
-    path("inventory/", include("inventory.urls")),  # Include the inventory app URLs
+    path("", include("inventory.urls")),  # Include the inventory app URLs
 ]
