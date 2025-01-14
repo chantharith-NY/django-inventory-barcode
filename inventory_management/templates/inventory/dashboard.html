@@ -97,6 +97,42 @@
                 max-width: 100%;
             }
         }
+        @media (max-width: 430px) {
+          .container {
+              padding: 0.5rem;
+          }
+
+          .mt-3{
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+          }
+          .contributors {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              flex-direction: column;
+              align-items: center;
+          }
+          .contributor {
+              margin: 0.5rem 0;
+          }
+          .contributor img {
+              width: 80px;
+              height: 80px;
+          }
+          .contributor h5 {
+              font-size: 0.8rem;
+          }
+          .contributor p {
+              font-size: 0.7rem;
+          }
+          .table {
+              font-size: 0.8rem;
+          }
+          .table th, .table td {
+              padding: 0.25rem;
+          }
+      }
     </style>
 </head>
 <body>
@@ -105,7 +141,6 @@
     </header>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
-          
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -114,22 +149,34 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a href="{% url 'inventory:add_category' %}">Add Category</a>
+                    <a href="{% url 'inventory:add' %}">Add</a>
                   </li>
                   <li class="nav-item">
-                    <a href="{% url 'inventory:add_item' %}">Add Item</a>
+                    <a href="{% url 'inventory:display' %}">Item Display</a>
                   </li>
                   <li class="nav-item">
                     <a href="{% url 'inventory:add_user' %}">Add User</a>
                   </li>
-                  <li>
-                    {% comment %}<a href="{% url 'inventory:logout' %}">Logout</a>{% endcomment %}
+                  <li class="nav-item">
+                    <a href="{% url 'inventory:display_users' %}">Display User</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{% url 'inventory:barcode_scan' %}">Barcode Scan</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{% url 'inventory:history' %}">History</a>
+                  </li>
+                  <li class="nav-item">
+                    <form method="POST" action="{% url 'inventory:logout' %}">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-link nav-link" style="display: inline; padding: 0; border: none; background: none;">Logout</button>
+                  </form>
                   </li>
                 </ul>
               </div>
           </div>
           {% endif %}
-          <a class="navbar-brand" href="{% url 'inventory:profile' %}">{{ user.username }}</a>
+          <a class="navbar-brand" href="{% url 'inventory:profile' %}">{{  user.first_name|upper }} {{ user.last_name|capfirst }}</a>
         </div>
       </nav>
     <h4 style="padding: 0.5rem 1rem; font-weight: 600;"><i class="fa-solid fa-house" style="font-size: 1.2rem;"></i> Dashboard</h4>
@@ -138,59 +185,45 @@
         <div class="available-item">
             <h3>Available Items</h3>
             <table class="table" >
-                <thead >
-                  <tr>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Email</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
-                  </tr>
-                  <tr>
-                    <td>Mary</td>
-                    <td>Moe</td>
-                    <td>mary@example.com</td>
-                  </tr>
-                  <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                  </tr>
-                </tbody>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Item Name</th>
+                  <th>Category</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in available_items %}
+                <tr>
+                  <td>{{ item.id }}</td>
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.category.name }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
             </table>    
         </div>
         <div class="available-item">
-            <h3>Available Items</h3>
+            <h3>Borrowed Items</h3>
             <table class="table">
-                <thead>
-                  <tr>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Email</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>John</td>
-                    <td>Doe</td>
-                    <td>john@example.com</td>
-                  </tr>
-                  <tr>
-                    <td>Mary</td>
-                    <td>Moe</td>
-                    <td>mary@example.com</td>
-                  </tr>
-                  <tr>
-                    <td>July</td>
-                    <td>Dooley</td>
-                    <td>july@example.com</td>
-                  </tr>
-                </tbody>
+              <thead>
+                <tr>
+                  <th>Item Name</th>
+                  <th>Borrowed By</th>
+                  <th>Quantity</th>
+                  <th>Borrowed Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for borrowed_item in borrowed_items %}
+                <tr>
+                  <td>{{ borrowed_item.item.name }}</td>
+                  <td>{{ borrowed_item.user.username }}</td>
+                  <td>{{ borrowed_item.quantity }}</td>
+                  <td>{{ borrowed_item.date_time }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
             </table>    
         </div>
     </div>
