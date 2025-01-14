@@ -58,6 +58,7 @@ def add(request):
     return render(request, 'inventory/add.html', {'categories': categories})
 
 @login_required
+@user_passes_test(is_superuser)
 def display(request):
     if request.method == "POST" and 'update_item' in request.POST:
         item_id = request.POST.get('item_id')
