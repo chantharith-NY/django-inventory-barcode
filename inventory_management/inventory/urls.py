@@ -17,7 +17,7 @@ urlpatterns = [
     path('profile/', profile, name='profile'),
     path('display_user/', display_user, name='display_users'),
     path('login/', auth_views.LoginView.as_view(template_name='inventory/login.html', redirect_authenticated_user=True), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
     path('barcode_scan/', views.barcode_scan, name='barcode_scan'),
     path('borrow_item/<str:item_id>/', views.borrow_item, name='borrow_item'),
     path('return_item/<str:item_id>/', views.return_item, name='return_item'),
